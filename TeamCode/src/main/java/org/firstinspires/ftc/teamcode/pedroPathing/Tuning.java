@@ -359,7 +359,7 @@ class TurnTuner extends OpMode {
  */
 class ForwardVelocityTuner extends OpMode {
     private final ArrayList<Double> velocities = new ArrayList<>();
-    public static double DISTANCE = 48;
+    public static double DISTANCE = 70;
     public static double RECORD_NUMBER = 10;
 
     private boolean end;
@@ -467,7 +467,7 @@ class ForwardVelocityTuner extends OpMode {
 class LateralVelocityTuner extends OpMode {
     private final ArrayList<Double> velocities = new ArrayList<>();
 
-    public static double DISTANCE = 48;
+    public static double DISTANCE = 80;
     public static double RECORD_NUMBER = 10;
 
     private boolean end;
@@ -558,7 +558,7 @@ class LateralVelocityTuner extends OpMode {
  * stops. The accelerations across the entire time the robot is slowing down is then averaged and
  * that number is then printed. This is used to determine how the robot will decelerate in the
  * forward direction when power is cut, making the estimations used in the calculations for the
- * drive Vector more accurate and giving better braking at the end of Paths.
+ * drive Vector more accurate and giving better braking at the end of Auto.
  *
  * @author Anyi Lin - 10158 Scott's Bots
  * @author Baron Henderson - 20077 The Indubitables
@@ -664,7 +664,7 @@ class ForwardZeroPowerAccelerationTuner extends OpMode {
  * stops. The accelerations across the entire time the robot is slowing down is then averaged and
  * that number is then printed. This is used to determine how the robot will decelerate in the
  * forward direction when power is cut, making the estimations used in the calculations for the
- * drive Vector more accurate and giving better braking at the end of Paths.
+ * drive Vector more accurate and giving better braking at the end of Auto.
  *
  * @author Anyi Lin - 10158 Scott's Bots
  * @author Aaron Yang - 10158 Scott's Bots
@@ -962,7 +962,7 @@ class TranslationalTuner extends OpMode {
         follower.setStartingPose(new Pose(72, 72));
     }
 
-    /** This initializes the Follower and creates the forward and backward Paths. */
+    /** This initializes the Follower and creates the forward and backward Auto. */
     @Override
     public void init_loop() {
         telemetryM.debug("This will activate the translational PIDF(s)");
@@ -1032,7 +1032,7 @@ class HeadingTuner extends OpMode {
     }
 
     /**
-     * This initializes the Follower and creates the forward and backward Paths. Additionally, this
+     * This initializes the Follower and creates the forward and backward Auto. Additionally, this
      * initializes the Panels telemetry.
      */
     @Override
@@ -1104,7 +1104,7 @@ class DriveTuner extends OpMode {
     }
 
     /**
-     * This initializes the Follower and creates the forward and backward Paths. Additionally, this
+     * This initializes the Follower and creates the forward and backward Auto. Additionally, this
      * initializes the Panels telemetry.
      */
     @Override
@@ -1185,7 +1185,7 @@ class Line extends OpMode {
         follower.setStartingPose(new Pose(72, 72));
     }
 
-    /** This initializes the Follower and creates the forward and backward Paths. */
+    /** This initializes the Follower and creates the forward and backward Auto. */
     @Override
     public void init_loop() {
         telemetryM.debug("This will activate all the PIDF(s)");
@@ -1253,7 +1253,7 @@ class CentripetalTuner extends OpMode {
     }
 
     /**
-     * This initializes the Follower and creates the forward and backward Paths.
+     * This initializes the Follower and creates the forward and backward Auto.
      * Additionally, this initializes the Panels telemetry.
      */
     @Override
@@ -1746,7 +1746,7 @@ class Drawing {
     }
 
     /**
-     * This draws all the Paths in a PathChain with a
+     * This draws all the Auto in a PathChain with a
      * specified look.
      *
      * @param pathChain the PathChain to draw

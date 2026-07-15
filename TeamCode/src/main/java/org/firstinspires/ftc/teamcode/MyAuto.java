@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode; // TODO: update to match your package
+package org.firstinspires.ftc.teamcode;
 
 import com.pedropathing.follower.Follower;
 import com.pedropathing.geometry.BezierCurve;
@@ -20,14 +20,10 @@ public class MyAuto extends OpMode {
 
     private Follower follower;
 
-    // -----------------------------------------------------------------------
-    // PATHS
-    // -----------------------------------------------------------------------
     private PathChain grab1, grab2, returnPath;
 
     public void buildPaths() {
 
-        // --- Grab 1: two straight lines ---
         grab1 = follower.pathBuilder()
                 .addPath(
                         new BezierLine(
@@ -45,12 +41,11 @@ public class MyAuto extends OpMode {
                 .setLinearHeadingInterpolation(Math.toRadians(0), Math.toRadians(0))
                 .build();
 
-        // --- Grab 2: two curves ---
         grab2 = follower.pathBuilder()
                 .addPath(
                         new BezierCurve(
                                 new Pose(130.539, 35.019),
-                                new Pose(85.206, 46.766),   // control point
+                                new Pose(85.206, 46.766),
                                 new Pose(79.496, 80.923)
                         )
                 )
@@ -58,18 +53,17 @@ public class MyAuto extends OpMode {
                 .addPath(
                         new BezierCurve(
                                 new Pose(79.496, 80.923),
-                                new Pose(64.694, 53.705),   // control point
-                                new Pose(131.973, 59.130)
+                                new Pose(64.694, 53.705),
+                                new Pose(120.986, 58.922)
                         )
                 )
                 .setLinearHeadingInterpolation(Math.toRadians(0), Math.toRadians(0))
                 .build();
 
-        // --- Return: straight line back ---
         returnPath = follower.pathBuilder()
                 .addPath(
                         new BezierLine(
-                                new Pose(131.973, 59.130),
+                                new Pose(120.986, 58.922),
                                 new Pose(79.544, 80.918)
                         )
                 )
@@ -77,31 +71,22 @@ public class MyAuto extends OpMode {
                 .build();
     }
 
-    // -----------------------------------------------------------------------
-    // IVY ROUTINE
-    // -----------------------------------------------------------------------
     public Command autoRoutine() {
         return sequential(
-                follow(follower, grab1, true),
-                // TODO: grab 1 subsystem command here
+                follow(follower, grab1,true),
 
                 follow(follower, grab2, true),
-                // TODO: grab 2 subsystem command here
 
                 follow(follower, returnPath, true)
-                // TODO: return/score subsystem command here
         );
     }
 
-    // -----------------------------------------------------------------------
-    // OPMODE LIFECYCLE
-    // -----------------------------------------------------------------------
     @Override
     public void init() {
         Scheduler.reset();
         follower = Constants.createFollower(hardwareMap);
+        follower.setStartingPose(new Pose(86.151, 7.908, Math.toRadians(0)));
         buildPaths();
-        follower.setStartingPose(new Pose(86.151, 7.908, Math.toRadians(0))); // start = beginning of grab1
     }
 
     @Override
